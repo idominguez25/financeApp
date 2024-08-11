@@ -42,10 +42,10 @@ public class CuentasService {
 	}
 
 	//Método para modificar un gasto
-	public static void modificarGasto(String nombre, double nuevaCantidad) {
+	public static void modificarGasto(String nombre, Gasto gastoModificado) {
 		for(Gasto gasto : gastos) {
 			if(gasto.getdescripcion().equalsIgnoreCase(nombre)) {
-				gasto.setCantidad(nuevaCantidad);
+				gasto.setCantidad(gastoModificado.getCantidad());
 	}
 		}
 	}

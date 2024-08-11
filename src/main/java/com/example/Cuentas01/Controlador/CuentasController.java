@@ -29,7 +29,7 @@ public class CuentasController {
 	
 	//Endpoint para modificar un gasto
 	@PutMapping("/gastos/{nombre}")
-	public static void modificarGasto(@PathVariable String nombre, @RequestBody double nuevaCantidad) {
-		CuentasService.modificarGasto(nombre, nuevaCantidad);
+	public static void modificarGasto(@PathVariable("nombre") String nombre, @RequestBody Gasto gastoModificado) {
+		CuentasService.modificarGasto(nombre, gastoModificado);
 	}
 }
