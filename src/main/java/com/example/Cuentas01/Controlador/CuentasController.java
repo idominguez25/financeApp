@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import org.springframework.web.bind.annotation.*;
 import com.example.Cuentas01.CuentasService.CuentasService;
 import com.example.Cuentas01.Modelo.Gasto;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/cuentas/gastos")
 public class CuentasController {
@@ -16,24 +16,28 @@ public class CuentasController {
 	}
 	
 	//Método para buscar un gasto en concreto
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/buscar")
 	public Gasto findByName(@RequestParam String nombre) {
 		return CuentasService.buscarPorNombre(nombre);
 	}
 	
 	//Endpoint para añadir un nuevo gasto
-	@PostMapping("/añadir")
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/add")
 	public static Gasto añadirGasto(@RequestBody Gasto nuevoGasto) {
 		return CuentasService.añadirGasto(nuevoGasto);
 	}
 	
 	//Endpoint para modificar un gasto
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/modificar")
 	public static Gasto modificarGasto(@RequestParam String nombre, @RequestBody Gasto gastoModificado) {
 		return CuentasService.modificarGasto(nombre, gastoModificado);
 	}
 	
 	//Endpoint para eliminar un gasto
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/eliminar")
 	public static void eliminarGasto(@RequestParam String nombre) {
 		CuentasService.eliminarGasto(nombre);

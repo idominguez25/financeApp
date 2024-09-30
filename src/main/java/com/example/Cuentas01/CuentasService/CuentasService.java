@@ -31,7 +31,13 @@ public class CuentasService {
 	
 	//Método para buscar un gasto en concreto
 	public static Gasto buscarPorNombre(String name) {
-		return gastos.stream().filter(gastos -> gastos.getdescripcion().equalsIgnoreCase(name)).findFirst().orElse(null);
+		for(Gasto gasto: gastos) {
+			if(gasto.getdescripcion().equalsIgnoreCase(name)) {
+				return gasto;
+			}
+		}
+		return null;
+		//return gastos.stream().filter(gastos -> gastos.getdescripcion().equalsIgnoreCase(name)).findFirst().orElse(null);
 	}
 	
 	//Método para añadir un nuevo gasto
@@ -45,6 +51,7 @@ public class CuentasService {
 	public static Gasto modificarGasto(String nombre, Gasto gastoModificado) {
 		Gasto gastoEncontrado = buscarPorNombre(nombre);
 		if(gastoEncontrado != null) {
+			gastoEncontrado.setdescripcion(gastoModificado.getdescripcion());
 			gastoEncontrado.setCantidad(gastoModificado.getCantidad());
 		}
 		return gastoEncontrado;
